@@ -58,7 +58,7 @@ export default {
       this.$emit("close", { player: this, from: params.from });
     },
     full() {
-      if (!isShowed) return;
+      if (!this.isShowed) return;
       if (!document.fullscreenElement) {
         this.$refs.player_block.requestFullscreen().catch(err => {
           alert(

@@ -31,20 +31,23 @@
               required
               minlength=50
               v-bind:disabled="formIsLocked")
+            span.counter {{message.length}} {{message.length > 50 ? "" : "(min 50)"}}
           
-          div.g-recaptcha(
-            data-size="invisible"
-            data-sitekey = "6Ldti6AUAAAAAFrT0B_jDh743D1dNMt8Fpj0I_sB" 
-            id='recaptcha')
+          recaptcha(
+            sitekey = "6Ldti6AUAAAAAFrT0B_jDh743D1dNMt8Fpj0I_sB" 
+            size="invisible"
+            ref='recaptcha')
           button.send(
             type="submit"
             v-bind:disabled="formIsLocked") Send
     
-    div.car(v-html="svgcar")
+    div.car(ref="car" v-html="require('./../assets/car.svg')")
 
 </template>
 <script>
 import { TweenMax, TimelineLite, Linear } from "gsap/TweenMax";
+import  VueRecaptcha  from "vue-recaptcha";
+
 
 export default {
   props: ["name"],
@@ -53,22 +56,24 @@ export default {
       _email: "",
       _subject: "",
       _message: "",
-      formIsLocked: false,
-      svgcar: require("./../assets/car.svg")
+      formIsLocked: false
     };
   },
-  components: {},
+  components: {
+    'recaptcha' : VueRecaptcha,
+  },
   methods: {
     onSubmit: async function(e) {
-      let token = "_test_";
-      /*
+      let token = "";
+      
       try {
-        token = await grecaptcha.execute();
+        token = await this.$refs.recaptcha.execute();
+        console.log(token);
       } catch (e) {
         console.log(e);
         return;
-      }*/
-
+      }
+      this.$refs.recaptcha.reset();
       this.animateCar();
 
       const api = "https://exponenta.site/api/post";
@@ -91,7 +96,7 @@ export default {
 
     animateCar: function() {
       this.formIsLocked = true;
-      const car = this.$el.querySelector(".car");
+      const car = this.$refs.car;
 
       car.style.left = "-100%";
       car.classList.add("car-move");
@@ -196,6 +201,7 @@ section {
     padding: 0px;
     transition: all 0.1s linear;
   }
+
   form {
     display: flex;
     flex-direction: column;
@@ -214,6 +220,13 @@ section {
   flex-direction: column;
   align-content: stretch;
   padding: 8px;
+
+  .counter {
+    margin-left: auto;
+    margin-top: -2em;
+    margin-right: 1em;
+    color: darkgrey;
+  }
   /*
   border: solid 3px #847a7a;
   border-radius: 8px;
@@ -236,6 +249,8 @@ section {
     background-color: #eeeeee;
   }
 }
+
+
 
 .car {
   position: fixed;
@@ -264,4 +279,10 @@ section {
     opacity: 0.4;
   }
 }
+</style>
+
+<style>
+  .grecaptcha-badge { 
+      visibility: hidden;
+  }
 </style>
