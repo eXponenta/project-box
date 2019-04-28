@@ -1,8 +1,10 @@
 <template lang="pug">
   div.overlay(:class= "{active:isOpened}" v-if="isOpened")
-    div.loader(:style="backgroundStyle" v-on:click.self="close")
-      //div.bg(:style="backgroundStyle")
-      //div.progress LOADING
+    div.loader(v-on:click.self="close")
+      div.bg(:style="backgroundStyle") 
+      div.progress(ref="progress" :class="{hidden: isShowed}")
+        div.char(v-for="char in 'LOADING'") {{char}}
+        div.dots(ref="dots") ∙∙∙
     div.player(ref="player_block")
       div.controlls
         div.name {{item.name}}
@@ -12,6 +14,9 @@
 </template>
 <script>
 import TitleBox from "./elements/TitleBox";
+import { TweenMax, TimelineLite, TimelineMax, Linear } from "gsap/TweenMax";
+import "gsap/CSSPlugin";
+import { setTimeout } from "timers";
 
 export default {
   components: {
@@ -23,7 +28,8 @@ export default {
       isShowed: false,
       mode: "iframe",
       item: {},
-      backgroundStyle: {}
+      backgroundStyle: {},
+      timeline: undefined
     };
   },
   created() {
@@ -50,11 +56,16 @@ export default {
 
       this.$emit("open", { player: this, from: params.from });
       this.isOpened = true;
+
+      setTimeout(() => {
+        this.timeline = this.runProgressAnimation();
+      }, 0);
     },
     close(params) {
       this.isOpened = false;
       this.isShowed = false;
-      if (document.fullscreenElement) document.exitFullscreen();
+      if (document.fullscreenElement)
+        document.exitFullscreen();
       this.$emit("close", { player: this, from: params.from });
     },
     full() {
@@ -74,14 +85,48 @@ export default {
     loaded() {
       //show trotling
       setTimeout(() => {
-        if (this.isOpened) this.isShowed = true;
+        if (this.isOpened) {
+          this.isShowed = true;
+          if (this.timeline) {
+            this.timeline.kill();
+          }
+        }
       }, 1000);
+    },
+
+    runProgressAnimation() {
+
+      const tl = new TimelineMax({ repeat: -1 });
+      const d = this.$refs.dots;
+      const p = this.$refs.progress;
+    
+      const duration = 2;
+      //dots animation
+      tl.set(d, {left: -100 / 7 + "%", opacity: 0});
+      tl.to(d, 0.25, {opacity : 1});
+      tl.to(d, duration, { left: "100%", ease : Linear.easeNone }, 0);
+      tl.to(d, 0.25, {opacity : 0}, "-=0.25");
+      
+      //chars anim
+      const tl_chars = new TimelineLite();
+      const childs = p.querySelectorAll(".char");
+
+      const item_duration = duration / (childs.length + 1);
+      childs.forEach((item, index) => {
+        tl_chars.to(item, item_duration, { marginTop: "-20px"}, index * item_duration );
+        tl_chars.to(item, item_duration * 2, { marginTop: "0px"}, (index + 1) * item_duration);
+      });
+      tl.add(tl_chars, 0);
+      tl.play();
+
+      return tl;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "../constants/constants.scss";
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 
 .overlay {
   display: none;
@@ -102,17 +147,51 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
+    display: flex;
+    justify-content: center;
 
-    filter: blur(5px) grayscale(0.6);
-    opacity: 0.5;
+    .bg {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+
+      filter: blur(5px) grayscale(0.6);
+      opacity: 0.5;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      font-family: "Roboto Mono", monospace;
+      position: relative;
+      margin: auto 0;
+      color: $var-main-text-color;
+      font-size: 4em;
+      opacity: 1;
+      
+      &.hidden {
+        opacity: 0;
+        transition: opacity .5s linear;
+      }
+    }
+
+    .dots {
+      font-size: 0.38em;
+      font-weight: bolder;
+      display: block;
+      position: absolute;
+      bottom: 0em;
+    }
   }
 
   &.active {
     display: flex;
   }
 }
+
 .player {
   width: 80%;
   height: 80%;
@@ -120,17 +199,22 @@ export default {
   margin-bottom: auto;
   position: relative;
   background-color: rgba($color: #000, $alpha: 0.2);
-
-  .hidden {
-    visibility: hidden;
-  }
-
+  
   iframe {
     border: none;
     width: 100%;
     height: calc(100% - 2em);
     overflow: hidden;
+    opacity: 1;
+    transition: opacity .5s linear;
+  
+    &.hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+
   }
+
   .controlls {
     position: relative;
     display: flex;
