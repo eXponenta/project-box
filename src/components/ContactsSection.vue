@@ -45,7 +45,7 @@
 
 </template>
 <script>
-import { TweenMax, TimelineLite, Linear } from "gsap/TweenMax";
+import {TimelineLite, Linear } from "gsap/TweenMax";
 import  VueRecaptcha  from "vue-recaptcha";
 
 
@@ -63,16 +63,19 @@ export default {
     'recaptcha' : VueRecaptcha,
   },
   methods: {
-    onSubmit: async function(e) {
-      let token = "";
-      
+    
+    onSubmit(){
+
+      this.$refs.recaptcha.$once("verify", (t)=> this.onVerifed(t) );
       try {
-        token = await this.$refs.recaptcha.execute();
-        console.log(token);
+        this.$refs.recaptcha.execute();
       } catch (e) {
-        console.log(e);
-        return;
+        console.error("ReCaptha error", e);
       }
+
+    },
+    onVerifed: async function(token) {
+     
       this.$refs.recaptcha.reset();
       this.animateCar();
 
@@ -84,7 +87,7 @@ export default {
         token: token
       });
 
-      const resp = fetch(api, {
+      fetch(api, {
         method: "post",
         headers: {
           Accept: "application/json",
