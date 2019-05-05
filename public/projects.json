@@ -9,6 +9,15 @@
     "images": ["./pref/ippp/s1.jpg", "./pref/ippp/s2.jpg"]
   },
   {
+    "name": "Homescapes ADS",
+    "tags": ["PixiJS", "Playable ADS", "Animating"],
+    "description": "Playable ADS demo.\nSimple interactive game in 1.5mb inline.",
+    "rolies": ["Developer", "UX", "Animator"],
+    "live": "./games/ads_home/index.inline.html",
+    "link": "./games/ads_home/index.inline.html",
+    "images": ["./pref/ads_home/s1.png"]
+  },
+   {
     "name": "Puffy Budget",
     "tags": ["PixiJS", "Particles", "Animating"],
     "description": "Simply fun game for ADWISE company on the eve of the 2019 year.",
