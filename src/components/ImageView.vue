@@ -112,7 +112,7 @@ img {
 
 .swiper-pagination-bullet-active {
     height: 32px;
-    margin: auto 8px -12px 24px;
+    margin: auto 8px -12px 16px !important;
 
 }
 
