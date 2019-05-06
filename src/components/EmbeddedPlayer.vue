@@ -10,17 +10,30 @@
         div.name {{item.name}}
         div.full.button.i(v-on:click="full")
         div.close.button.i(v-on:click="close")
-      iframe(:class="{hidden: !isShowed}" v-if="mode==='iframe'" v-bind:src="item.live" @load.passive="loaded")
+      iframe(
+        :class="{hidden: !isShowed}" 
+        v-if="mode==='iframe'"
+        v-bind:src="item.live"
+        @load.passive="loaded")
+      ImageView(
+        :class="{hidden: !isShowed}"
+        v-if="mode==='images'" 
+        :images="item.images" 
+        @load.passive="loaded")
+
 </template>
 <script>
 import TitleBox from "./elements/TitleBox";
-import { TweenMax, TimelineLite, TimelineMax, Linear } from "gsap/TweenMax";
+import ImageView from "./ImageView";
+
+import { TimelineLite, TimelineMax, Linear } from "gsap/TweenMax";
 import "gsap/CSSPlugin";
 import { setTimeout } from "timers";
 
 export default {
   components: {
-    TitleBox
+    TitleBox,
+    ImageView
   },
   data() {
     return {
@@ -269,6 +282,14 @@ export default {
     .full::before {
       content: "\f2d1";
     }
+  }
+}
+@media only screen and (max-device-width: 480px) and (max-device-width: 480px),
+ only screen and (max-device-height: 480px ) and (orientation: landscape){
+
+   .player {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

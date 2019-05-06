@@ -3,7 +3,7 @@
     TitleBox.item-name(:name="item.name" hoverMode="")
     div.item-body
       div.item-box
-        div.item-images.item(:style='bgImage')
+        div.item-images.item(:style='bgImage' @click="openPreview(item, 'images')")
         //  img(v-bind:src='item.images[0]')
         div.item-text.item
           div.item-desription {{item.description}}
@@ -60,11 +60,11 @@ export default {
         window.open(lnk, "_blank");
       }
     },
-    openPreview(item) {
+    openPreview(item, mode = "iframe") {
       this.$root.$emit("openFullscreen", {
         item: item,
         from: this,
-        mode: "iframe"
+        mode: mode
       });
     }
   }
