@@ -85,7 +85,7 @@ img {
     position: relative;
     width: 32px;
     height: 8px;
-    margin: 50% 8px 0 8px;
+    margin: 0 8px 0 8px;
     transition: all 0.1s linear;
     z-index: 10;
     opacity: 1;
@@ -114,20 +114,22 @@ img {
 
 .swiper-pagination-bullet-active {
     height: 32px;
-    margin: auto 8px -12px 16px !important;
-
+    margin: 0 8px 0 16px !important;
 }
 
 .swiper-pagination {
     bottom: 0px !important;
     height: 3em !important;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &::after {
         content: "";
         display: block;
         position: absolute;
-        top: 1em;
+        top: 50%;
         width: 100%;
         height: 2em;
         background: $var-burger-color;
