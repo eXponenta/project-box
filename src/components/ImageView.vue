@@ -2,10 +2,8 @@
     swiper.carousel(:options = "sOptions")
         template(v-for="(src, index) in images")
             swiper-slide.item
-                img(:src="src" :alt="'Screenshot' + index" @error="imageError")
+                img(:src="src" :alt="'Screenshot' + index" @error="imageError" @load="imageLoaded")
         div.swiper-pagination(slot="pagination")
-        //div.counter
-        //    div.tick(v-for = "(_, index) in images" :class = {selected : index === imageIndex})
 </template>
 <script>
 import 'swiper/dist/css/swiper.css'
@@ -35,6 +33,9 @@ export default {
     methods: {
         imageError(e) {
             e.target.className += " broken";
+        },
+        imageLoaded(e) {
+            this.$emit("load", e);
         }
     }
 }
@@ -84,7 +85,7 @@ img {
     position: relative;
     width: 32px;
     height: 8px;
-    margin: auto 8px 0 8px;
+    margin: 50% 8px 0 8px;
     transition: all 0.1s linear;
     z-index: 10;
     opacity: 1;
@@ -96,6 +97,7 @@ img {
         height: 100%;
         position: absolute;
         bottom: 0px;
+        left: 0px;
     }
     &::after {
         background: $var-title-text-color;
@@ -116,5 +118,20 @@ img {
 
 }
 
+.swiper-pagination {
+    bottom: 0px !important;
+    height: 3em !important;
+    width: 100%;
 
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1em;
+        width: 100%;
+        height: 2em;
+        background: $var-burger-color;
+    
+    }
+}
 </style>
