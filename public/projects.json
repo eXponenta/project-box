@@ -9,12 +9,13 @@
     "images": ["./pref/ippp/s1.jpg", "./pref/ippp/s2.jpg"]
   },
   {
-    "name": "Playble ADS Demo",
+    "name": "Playble Demo",
     "tags": ["PixiJS", "Playable ADS", "Animating"],
-    "description": "Reconstructor of popular Homescapes Ad.\nSimple interactive game in 1.5mb inline.",
+    "description": "Reconstruction of popular Homescapes Ad. Simple interactive game on PixiJS v5 with inlined resources into one file.\nTotal size about 1.5mb.",
     "rolies": ["Developer", "UX", "Animator"],
     "live": "./games/ads_home/index.inline.html",
     "link": "./games/ads_home/index.inline.html",
+    "github" : "https://github.com/eXponenta/pixi5-playables-boilerplate",
     "images": ["./pref/ads_home/s1.png"]
   },
    {
