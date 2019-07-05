@@ -26,7 +26,7 @@
 		"tags": ["PixiJS", "Particles", "Animating"],
 		"description": "Simply fun game for ADWISE company on the eve of the 2019 year.",
 		"rolies": ["Developer", "UX", "Animator"],
-		"live": "https://exponenta.site/games/puffy",
+		"live": "./games/puffy",
 		"link": "http://adwise.ru/ny2019/",
 		"images": ["./pref/puffy/s1.png"]
 	},
