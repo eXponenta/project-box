@@ -1,50 +1,55 @@
 [
-  {
-    "name": "ИППП",
-    "tags": ["ThreeJS", "PixiJS", "Adobe Animate"],
-    "description": "Big project on hybrid HTML5-engine: ThreeJS and PixiJS.\nPixiJS was used as renderer for Adobe Animate animations in ThreeJS render context.",
-    "rolies": ["Developer", "3D Artis", "Animator"],
-    "live": "https://иппп.рф/",
-    "link": "https://иппп.рф/",
-    "images": ["./pref/ippp/s1.jpg", "./pref/ippp/s2.jpg"]
-  },
-  {
-    "name": "Playble Demo",
-    "tags": ["PixiJS", "Playable ADS", "Animating"],
-    "description": "Reconstruction of popular Homescapes Ad. Simple interactive game on PixiJS v5 with inlined resources into one file.\nTotal size about 1.5mb.",
-    "rolies": ["Developer", "UX", "Animator"],
-    "live": "./games/ads_home/index.inline.html",
-    "link": "./games/ads_home/index.inline.html",
-    "github" : "https://github.com/eXponenta/pixi5-playables-boilerplate",
-    "images": ["./pref/ads_home/s1.png"]
-  },
-   {
-    "name": "Puffy Budget",
-    "tags": ["PixiJS", "Particles", "Animating"],
-    "description": "Simply fun game for ADWISE company on the eve of the 2019 year.",
-    "rolies": ["Developer", "UX", "Animator"],
-    "live": "https://exponenta.site/games/puffy",
-    "link": "http://adwise.ru/ny2019/",
-    "images": ["./pref/puffy/s1.png"]
-  },
-  {
-    "name": "Snowflake",
-    "tags": ["PixiJS", "Particles", "Physics", "Composing"],
-    "description": "Glossy cask with snow.\nParticle distribution simulation in closed space with curved-shapes colliding checking.\nUses image distortion filter for glass effect imitation between midleground and foreground.",
-    "rolies": ["Developer", "UX", "Animator"],
-    "live": "https://exponenta.github.io/snowflakes/",
-    "github": "https://github.com/eXponenta/snowflakes/",
-    "link": "https://github.com/eXponenta/snowflakes/",
-    "images": ["./pref/snowflakes/s1.png"]
-  },
-  {
-    "name": "Fruit Ninja",
-    "tags": ["PixiJS", "Particles", "Physics", "Animating", "Spine"],
-    "description": "DragonBones (Spine alt.) was be used for fruits animation on start page.",
-    "rolies": ["Developer", "UX", "Animator"],
-    "live": "https://exponenta.github.io/html5fruit",
-    "github": "https://github.com/eXponenta/html5fruit/",
-    "link": "http://zinkit.ru/igra",
-    "images": ["./pref/fruit/s1.png"]
-  }
+	{
+		"id": "ippp",
+		"name": "ИППП",
+		"tags": ["ThreeJS", "PixiJS", "Adobe Animate"],
+		"description": "Big project on hybrid HTML5-engine: ThreeJS and PixiJS.\nPixiJS was used as renderer for Adobe Animate animations in ThreeJS render context.",
+		"rolies": ["Developer", "3D Artis", "Animator"],
+		"live": "https://иппп.рф/",
+		"link": "https://иппп.рф/",
+		"images": ["./pref/ippp/s1.jpg", "./pref/ippp/s2.jpg"]
+	},
+	{
+		"id": "playable_demo",
+		"name": "Playble Demo",
+		"tags": ["PixiJS", "Playable ADS", "Animating"],
+		"description": "Reconstruction of popular Homescapes Ad. Simple interactive game on PixiJS v5 with inlined resources into one file.\nTotal size about 1.5mb.",
+		"rolies": ["Developer", "UX", "Animator"],
+		"live": "./games/ads_home/index.inline.html",
+		"link": "./games/ads_home/index.inline.html",
+		"github": "https://github.com/eXponenta/pixi5-playables-boilerplate",
+		"images": ["./pref/ads_home/s1.png"]
+	},
+	{
+		"id": "puffy_budget",
+		"name": "Puffy Budget",
+		"tags": ["PixiJS", "Particles", "Animating"],
+		"description": "Simply fun game for ADWISE company on the eve of the 2019 year.",
+		"rolies": ["Developer", "UX", "Animator"],
+		"live": "https://exponenta.site/games/puffy",
+		"link": "http://adwise.ru/ny2019/",
+		"images": ["./pref/puffy/s1.png"]
+	},
+	{
+		"id": "snowflake",
+		"name": "Snowflake",
+		"tags": ["PixiJS", "Particles", "Physics", "Composing"],
+		"description": "Glossy cask with snow.\nParticle distribution simulation in closed space with curved-shapes colliding checking.\nUses image distortion filter for glass effect imitation between midleground and foreground.",
+		"rolies": ["Developer", "UX", "Animator"],
+		"live": "https://exponenta.github.io/snowflakes/",
+		"github": "https://github.com/eXponenta/snowflakes/",
+		"link": "https://github.com/eXponenta/snowflakes/",
+		"images": ["./pref/snowflakes/s1.png"]
+	},
+	{
+		"id": "fruit_ninja",
+		"name": "Fruit Ninja",
+		"tags": ["PixiJS", "Particles", "Physics", "Animating", "Spine"],
+		"description": "DragonBones (Spine alt.) was be used for fruits animation on start page.",
+		"rolies": ["Developer", "UX", "Animator"],
+		"live": "https://exponenta.github.io/html5fruit",
+		"github": "https://github.com/eXponenta/html5fruit/",
+		"link": "http://zinkit.ru/igra",
+		"images": ["./pref/fruit/s1.png"]
+	}
 ]

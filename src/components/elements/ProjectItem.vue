@@ -3,7 +3,7 @@
     TitleBox.item-name(:name="item.name" hoverMode="")
     div.item-body
       div.item-box
-        div.item-images.item(:style='bgImage' @click="openPreview(item, 'images')")
+        div.item-images.item(:style='bgImage' @click="openPreviewImage(item)")
         //  img(v-bind:src='item.images[0]')
         div.item-text.item
           div.item-desription {{item.description}}
@@ -17,7 +17,7 @@
           v-bind:hoverMode="item.live ? 'top' : 'none'"
           name="Preview"
           bodyColor="#4652db"
-          @click.native="openPreview(item)"
+          @click.native="openPreviewLive(item)"
           )
         TitleBox.github.button(
           :class="{active:item.github}"
@@ -60,12 +60,13 @@ export default {
         window.open(lnk, "_blank");
       }
     },
-    openPreview(item, mode = "iframe") {
-      this.$root.$emit("openFullscreen", {
-        item: item,
-        from: this,
-        mode: mode
-      });
+    
+    openPreviewImage(item) {
+      this.$router.push("image/" + item.id);
+    },
+    
+    openPreviewLive(item) {
+      this.$router.push("live/" + item.id);
     }
   }
 };

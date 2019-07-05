@@ -79,7 +79,7 @@ export default {
       this.$refs.recaptcha.reset();
       this.animateCar();
 
-      const api = "https://exponenta.site/api/post";
+      const api = "api/post";
       const payload = JSON.stringify({
         email: this.email,
         subject: this.subject,
