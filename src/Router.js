@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Player from "./components/EmbeddedPlayer.vue";
-import Test from "./components/Test.vue";
 
 Vue.use(VueRouter);
 

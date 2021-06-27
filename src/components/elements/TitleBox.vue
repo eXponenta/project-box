@@ -48,7 +48,7 @@ $var-width-hover: 250px;
   flex-direction: row-reverse;
   margin-right: 0px;
   transition: all 0.2s linear;
-
+  user-select: none;
   font-size: $var-height;
 }
 

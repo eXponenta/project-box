@@ -45,7 +45,7 @@
 
 </template>
 <script>
-import {TimelineLite, Linear } from "gsap/TweenMax";
+import { TimelineLite, Linear } from "gsap/TweenMax";
 import  VueRecaptcha  from "vue-recaptcha";
 
 
@@ -53,9 +53,9 @@ export default {
   props: ["name"],
   data() {
     return {
-      _email: "",
-      _subject: "",
-      _message: "",
+      $email: "",
+      $subject: "",
+      $message: "",
       formIsLocked: false
     };
   },
@@ -70,6 +70,7 @@ export default {
       try {
         this.$refs.recaptcha.execute();
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error("ReCaptha error", e);
       }
 
@@ -132,26 +133,26 @@ export default {
   computed: {
     email: {
       get() {
-        return this.$data._email;
+        return this.$data.$email;
       },
       set(m) {
-        this.$data._email = m;
+        this.$data.$email = m;
       }
     },
     subject: {
       get() {
-        return this.$data._subject;
+        return this.$data.$subject;
       },
       set(s) {
-        this.$data._subject = s;
+        this.$data.$subject = s;
       }
     },
     message: {
       get() {
-        return this.$data._message;
+        return this.$data.$message;
       },
       set(m) {
-        this.$data._message = m;
+        this.$data.$message = m;
       }
     }
   }

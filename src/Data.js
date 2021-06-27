@@ -16,7 +16,6 @@ async function fetchData(url) {
 		return items;
 	} catch (e) {
 		status = "error";
-		console.error(e);
 		return [];
 	}
 }

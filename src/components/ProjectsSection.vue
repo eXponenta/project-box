@@ -20,9 +20,9 @@ export default {
 		ProjectItem
 	},
 	created() {
-		 Data.fetchData().then((e)=>{
-			 this.items = e;
-		 });
+		Data.fetchData().then((e)=>{
+			this.items = e;
+		});
 	}
 };
 </script>

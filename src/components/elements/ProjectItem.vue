@@ -104,6 +104,12 @@ $var-project-button-height: 1.25em;
   box-shadow: -3px 2px 0px 1px rgba(#000000, 0.6);
   background-position: center;
   background-size: cover;
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &::before,
   &::after {
