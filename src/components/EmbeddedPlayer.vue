@@ -2,7 +2,7 @@
   .overlay(:class="{ active: isOpenedAnim }", v-if="isOpened")
     .loader(v-on:click="close")
       .bg(:style="backgroundStyle") 
-      .progress(ref="progress", :class="{ hidden: isShowed }")
+      .progress(ref="progress", :class="{ hidden: isPreloadHidden }")
         .char(v-for="char in 'LOADING'") {{ char }}
         .dots(ref="dots") ∙∙∙
     .player(ref="player_block")
@@ -27,7 +27,7 @@
 import TitleBox from "./elements/TitleBox";
 import ImageView from "./ImageView";
 
-import { TimelineLite, TimelineMax, Linear } from "gsap/TweenMax";
+import { TimelineLite, TimelineMax, Linear } from "gsap";
 import "gsap/CSSPlugin";
 import { setTimeout } from "timers";
 import Data from "./../Data";
@@ -42,6 +42,7 @@ export default {
       isOpened: false,
       isOpenedAnim: false,
       isShowed: false,
+      isPreloadHidden: true,
       mode: "iframe",
       item: {},
       backgroundStyle: {},
@@ -93,11 +94,13 @@ export default {
 
       this.$emit("open", { player: this, from: params.from });
       this.isOpened = true;
+      this.isShowed = false;
+      this.isPreloadHidden = true;
 
       setTimeout(() => {
         this.isOpenedAnim = true;
-
-        this.$el.addEventListener('transitionend', () => {         
+        this.$el.addEventListener('transitionend', () => {          
+          this.isPreloadHidden = false;
           this.timeline = this.runProgressAnimation();
         }, {once: true});
       }, 0);
@@ -106,11 +109,13 @@ export default {
     close() {
       if (document.fullscreenElement) document.exitFullscreen();
       //this.$emit("close", { player: this, from: params.from });
-      this.$router.replace("/");
 
-      this.isOpened = false;
-      this.isShowed = false;
       this.isOpenedAnim = false;
+      this.$el.addEventListener('transitionend', () => {
+        this.$router.replace("/");      
+        this.isOpened = false;
+        this.isShowed = false;
+      }, {once: true});
     },
 
     full() {
@@ -131,6 +136,8 @@ export default {
       setTimeout(() => {
         if (this.isOpened) {
           this.isShowed = true;
+          this.isPreloadHidden = true;
+
           if (this.timeline) {
             this.timeline.kill();
           }
@@ -181,6 +188,8 @@ export default {
 @import "../constants/constants.scss";
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 
+$anim-time: 0.25s;
+
 .overlay {
   display: flex;
   position: fixed;
@@ -201,8 +210,9 @@ export default {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;    
-    transition: opacity 0.5s;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity $anim-time;
 
     .bg {
       overflow: hidden;
@@ -223,7 +233,8 @@ export default {
       position: relative;
       margin: auto 0;
       color: $var-main-text-color;
-      font-size: 4em;
+      font-size: 4em;      
+      transition: opacity 0.5s linear;
       opacity: 1;
 
       &.hidden {
@@ -240,7 +251,7 @@ export default {
       bottom: 0em;
     }
   }
-  transition: opacity 0.5s;
+  transition: opacity $anim-time;
 
   &.active {
     background-color: rgba($color: #000000, $alpha: 0.6);
@@ -248,13 +259,15 @@ export default {
     .loader {
       .bg {
         opacity: 0.6;
-        transition: opacity 0.25s;
+        transition: opacity $anim-time;
       }
+
+      opacity: 1;
     }
 
     .player {
       top: 0px;
-      transition: top 0.25s;
+      transition: top $anim-time;
     }
   }
 }
@@ -267,7 +280,7 @@ export default {
   margin-bottom: auto;
   position: relative;
   background-color: rgba($color: #000, $alpha: 0.2);  
-  transition: top 0.5s;
+  transition: top $anim-time;
 
   iframe {
     border: none;

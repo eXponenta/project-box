@@ -45,7 +45,7 @@
 
 </template>
 <script>
-import { TimelineLite, Linear } from "gsap/TweenMax";
+import { TimelineLite, Linear } from "gsap";
 import  VueRecaptcha  from "vue-recaptcha";
 
 
