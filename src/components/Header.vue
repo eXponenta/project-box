@@ -6,19 +6,41 @@
         <div></div>
         <div></div>
       </div>
-      <span class="login">Xponenta</span>
+        <span class="login" @click = "goGithub">Xponenta</span>
+        <span class="logo-github" @click = "goGithub"></span>
     </div>
   </header>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    goGithub() {
+      window.open('https://github.com/eXponenta', '_blank');
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 @import "../constants/constants.scss";
 
 .title {
-  margin-left: 4em;
+  padding: 0 4em;
+  display: flex;
+  align-items: baseline;
 }
+
+.logo-github {
+  align-self: center;
+  margin-left: auto;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-image: url('https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg');
+
+  cursor: pointer;
+}
+
+
 .login {
   font-size: 2em;
   font-weight: bolder;
@@ -75,7 +97,7 @@ header {
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .title {
-    margin: 0;
+    padding: 0;
   }
 }
 </style>
