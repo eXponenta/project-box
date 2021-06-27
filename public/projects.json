@@ -1,5 +1,87 @@
 [
 	{
+		"id": "jolly-world",
+		"name": "Jolly World",
+		"tags": ["PixiJS", "WebGL"],
+		"description": "Hardcore road to point game with a lot of blood, where you should finish level on different vehicles.\n\n Author: Erik Sombroek",
+		"rolies": ["Developer", "Consult"],
+		"link": "https://jollyworld.app/",
+		"images": ["./pref/jw/jw1.png", "./pref/jw/jw2.png", "./pref/jw/jw3.png"]
+	},
+	{
+		"id": "away-tester",
+		"name": "AwayFL Play",
+		"tags": ["AwayJS","AwayFL","AS3", "AVM2", "Compilers", "WebGL"],
+		"description": "Away FL Playground. Used for fast testing a SWF on campobility by AwayFL runtime.\nAwayFL - Flash emulator for HTML5",
+		"rolies": ["Developer", "Consult"],
+		"link": "https://exponenta.games/games/AFL/",
+		"github" : "https://github.com/awayfl/",
+		"images": ["./pref/afl/afl2.png"]
+	},
+	{
+		"id": "map",
+		"name": "Clash Map",
+		"tags": ["PixiJS", "WebGL"],
+		"description": "Huge map rendering POC, based on PixiJS and Pixi-SVG.\nHas large tile-based background (28k x 18k pixels) and ~2000 dynamics regions about 2 millions vertices.",
+		"link": "https://exponenta.games/games/map/",
+		"live": "https://exponenta.games/games/map/",
+		"rolies": ["Developer"],
+		"images": ["./pref/map/map.png"]
+	},
+	{
+		"id": "frame",
+		"name": "Frame",
+		"tags": ["WebGL", "OFrame"],
+		"description": "Pseudo global illumination implementation of glowed tubes, first usage of OGL",
+		"rolies": ["Developer"],
+		"live": "https://exponenta.games/games/frame",
+		"link": "https://exponenta.games/games/frame",
+		"github" : "https://github.com/oframe/ogl",
+		"images": ["./pref/frame/frame.png"]
+	},
+	{
+		"id": "duck-game",
+		"name": "DPG",
+		"tags": ["THREE", "PAPER 3", "WebGL"],
+		"description": "Game for the contest from Dra.Ru\nIt uses a high-performance intersection search algorithm, which allows you to run more than 200 bots.",
+		"rolies": ["Developer"],
+		"live": "https://exponenta.games/games/duck/?fast=1&mobs=10&mode=mesh&octs=0&spikes=0",
+		"link": "https://exponenta.games/games/duck/?fast=1&mobs=30&mode=mesh&octs=0&spikes=0",
+		"github" : "https://github.com/eXponenta/Duck-pinter/",
+		"images": ["./pref/duck/duck.png"]
+	},
+	{
+		"id": "pixi-svg",
+		"name": "PIXI-SVG",
+		"tags": ["SVG", "PixiJS", "WebGL"],
+		"description": "SVG rendering supports.\nGenerate PIXI.Graphics from SVG Shapes instead of static rasterisation.",
+		"rolies": ["Developer"],
+		"live": "https://exponenta.github.io/pixi5-svg-examples/index.html",
+		"link": "https://exponenta.github.io/pixi5-svg-examples/live.html",
+		"github" : "https://github.com/eXponenta/pixi5-svg/",
+		"images": ["./pref/pixi_svg/pixi_svg_1.png"]
+	},
+	{
+		"id": "game-pack",
+		"name": "GAME PACK",
+		"tags": ["PixiJS", "WebGL", "Spine"],
+		"description": "A collection of 7 simple mobile games in one style.",
+		"rolies": ["Developer", "Game Designer"],
+		"link": "https://exponenta.games/games/game-pack?v=4",
+		"images": [
+			"./pref/game-pack/main.jpg",
+
+			"./pref/game-pack/gp_t.jpg",
+			"./pref/game-pack/gp_b.jpg",
+			"./pref/game-pack/gp_p.jpg",
+			"./pref/game-pack/gp_f.jpg",
+			"./pref/game-pack/gp_c.jpg",
+			"./pref/game-pack/gp_tt.jpg",
+			"./pref/game-pack/gp_m.jpg"
+		]
+	},
+	
+	{
 		"id": "ippp",
 		"name": "ИППП",
 		"tags": ["ThreeJS", "PixiJS", "Adobe Animate"],
