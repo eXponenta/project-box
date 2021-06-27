@@ -27,10 +27,11 @@
 import TitleBox from "./elements/TitleBox";
 import ImageView from "./ImageView";
 
-import { TimelineLite, TimelineMax, Linear } from "gsap";
-import "gsap/CSSPlugin";
+import { TimelineLite, TimelineMax, Linear, CSSPlugin, gsap } from "gsap";
 import { setTimeout } from "timers";
 import Data from "./../Data";
+
+gsap.registerPlugin(CSSPlugin);
 
 export default {
   components: {
